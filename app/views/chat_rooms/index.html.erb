@@ -1,0 +1,18 @@
+<div class="min-h-screen">
+  <h1 class="font-bold text-5xl text-center mt-8">
+    Chat Rooms
+  </h1>
+  <div>
+    <ul>
+      <% @chat_rooms.each do |chat_room| %>
+        <li class="border-2 rounded-lg mt-12 w-2/3 mx-auto hover:border-sky-800 relative">
+          <%= link_to chat_room.name, chat_room, class: "p-8 block font-semibold text-xl" %>
+          <span class="absolute right-0 bottom-0 px-4 pb-4">
+            <b>Administrator: </b> <%= chat_room.user.username %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,46 @@
+<div class="min-h-screen">
+  <h2 class="font-bold text-5xl text-center">
+      <%= current_user.username %>'s Profile
+  </h2>
+  <div class="flex justify-between mt-32">
+    <div class="w-1/2">
+      <p class="font-medium text-lg">
+        <strong>Email: </strong>
+        <%= current_user.email %>
+      </p>
+      <br>
+      <p class="font-medium text-lg">
+        <strong>Username: </strong>
+        <%= current_user.username %>
+      </p>
+      <br>
+      <p class="font-medium text-lg">
+        <strong>Membership: </strong>
+        <%= current_user.membership %>
+      </p>
+      <br><br>
+      <%= link_to 'Change Status', edit_user_path,
+        class: "text-white bg-blue-700 font-medium text-sm px-5 py-2.5 text-center ml-4 cursor-pointer hover:bg-blue-500"
+      %>
+    </div>
+    <div class="w-1/2">
+      <h2 class="text-center font-medium text-2xl mb-8">
+        <%= current_user.username %>'s Rooms
+      </h2>
+      <% if current_user.chat_rooms.any? %>
+        <ul>
+        <% @user.chat_rooms.each do |room| %>
+          <li>
+            <%= link_to room.name, chat_room_path(room),
+              class: "p-8 block font-medium text-xl border-2 rounded-lg mb-4 hover:border-sky-800"
+            %>
+          </li>
+        <% end %>
+        </ul>
+        <% else %>
+          <p class="text-center text-lg mt-16">User does not have any room yet.</p>
+        <% end %>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,14 @@
+<div class="text-center my-16 font-semibold text-2xl">
+  <% ["notice", "alert"].each do |message_type| %>
+    <% if flash[message_type.to_sym].present? %>
+      <p style="color: <%= message_type == 'notice' ? 'green' : 'red' %>; font-weight: bold;" 
+         data-controller="close-message" 
+         data-action="click->close-message#close">
+        <%= flash[message_type.to_sym] %>
+        <span class="cursor-pointer text-gray-500 mr-4 hover:text-gray-700">
+          X
+        </span>
+      </p>
+    <% end %>
+  <% end %>
+</div>
